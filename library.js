@@ -2,8 +2,10 @@ const form = document.querySelector('.creation-window');
 form.classList.add("inactive");
 form.style.display = "none";
 
-const libraryContainer = document.querySelector('.books-container');
+const libraryContainer = document.querySelector('.library');
 libraryContainer.classList.add("opaque");
+
+const books = document.querySelector('.books-container');
 
 const libraryTransparentOpacity = 0.2;
 

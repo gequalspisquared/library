@@ -10,6 +10,14 @@ body {
     font-size: large;
 }
 
+.library {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 .books-container {
     display: flex;
     flex-direction: column;
