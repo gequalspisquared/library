@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script defer src="book.js"></script>
+  <!-- <script defer src="useBook.js"></script> -->
+  <script defer src="library.js"></script>
+
+  <title>Simple Library</title>
+</head>
+<body>
+  
+  <div class="books-container">
+    <div class="book">
+      <p>Name: The Hobbit</p>
+      <p>Author: J.R.R. Tolkien</p>
+      <p>Pages: 295</p>
+      <p>Read: False</p>
+    </div>
+  </div>
+
+  <button class="add">Add Book!</button>
+
+  <div class="creation-window inactive">
+    <form>
+      <!-- <label for="name">Book's Name</label><br> -->
+      <input type="text" placeholder="Book's Name" name="name"><br>
+      <!-- <label for="author">Book's Author</label><br> -->
+      <input type="text" placeholder="Book's Author" name="author"><br>
+      <!-- <label for="pageCount">Book's Length (pages)</label><br> -->
+      <input type="text" placeholder="Page Coubt" name="pageCount"><br>
+      <label for="read">Have you read this before?</label>
+      <input type="checkbox" name="read">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  
+</body>
+</html>

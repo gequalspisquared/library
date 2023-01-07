@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #F1F2EB;
+    gap: 10px;
+    font-size: large;
+}
+
+.books {
+    display: flex;
+}
+
+.book {
+    width: 250px;
+    padding: 10px;
+    background-color: #EAEBE4;
+}
+
+.creation-window {
+    width: 300px;
+    padding: 10px;
+    background-color: #EAEBE4;
+}
+
+.creation-window>form>* {
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: large;
+}
