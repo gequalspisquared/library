@@ -2,8 +2,10 @@ const form = document.querySelector('.creation-window');
 form.classList.add("inactive");
 form.style.display = "none";
 
-const libraryContainer = document.querySelector('.library');
+const libraryContainer = document.querySelector('.books-container');
 libraryContainer.classList.add("opaque");
+
+const libraryTransparentOpacity = 0.2;
 
 let library = [];
 
@@ -11,6 +13,11 @@ form.addEventListener('submit', (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     addBookToLibrary(formData);
+
+    toggleForm();
+    toggleLibraryOpacity(libraryTransparentOpacity);
+
+    document.querySelector('.form').reset();
 });
 
 function addBookToLibrary(formData) {
@@ -31,24 +38,23 @@ function createBookFromFormData(formData) {
 
 function toggleForm() {
     if (form.classList[1] === "inactive") {
-        form.classList[1] = "active";
+        form.classList.replace("inactive", "active");
         form.style.display = "block";
         return;
     }
 
-    form.classList[1] = "inactive";
+    form.classList.replace("active", "inactive");
     form.style.display = "none";
 }
 
 function toggleLibraryOpacity(opacity = 0.3) {
-    console.log(libraryContainer.classList);
     if (libraryContainer.classList[1] === "opaque") {
-        libraryContainer.classList[1] = "transparent";
+        libraryContainer.classList.replace("opaque", "transparent");
         libraryContainer.style.opacity = opacity;
         return;
     }
 
-    libraryContainer.classList[1] = "opaque";
+    libraryContainer.classList.replace("transparent", "opaque");
     libraryContainer.style.opacity = 1.0;
 }
 
@@ -65,5 +71,5 @@ document.onkeydown = function(e) {
 const addButton = document.querySelector('.add');
 addButton.addEventListener('click', (e) => {
     toggleForm();
-    toggleLibraryOpacity(0.3);
+    toggleLibraryOpacity(libraryTransparentOpacity);
 });

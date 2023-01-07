@@ -10,6 +10,14 @@ body {
     font-size: large;
 }
 
+.books-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 .books {
     display: flex;
 }
