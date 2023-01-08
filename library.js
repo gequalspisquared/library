@@ -9,7 +9,8 @@ const books = document.querySelector('.books-container');
 
 const libraryTransparentOpacity = 0.2;
 
-let library = [];
+let library = [new Book("The Hobbit", "J.R.R. Tolkien", 295, false)];
+addBookToDOM(library[0]);   
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -134,8 +135,6 @@ function changeRead(e) {
     const book = e.target.parentElement;
     const read = book.querySelector('.read-status');
     const readStatus = read.getAttribute('data-read');
-    console.log(readStatus);
-    console.log(read);
 
     if (readStatus === "false") {
         read.innerText = "Read: True"
