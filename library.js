@@ -27,6 +27,33 @@ function addBookToLibrary(formData) {
 
     library.push(newBook);
     console.log(library[0]);
+
+    addBookToDOM(newBook);
+}
+
+function addBookToDOM(book) {
+    const newBook = document.createElement('div');
+    newBook.classList.add("book");
+    
+    const nameNode = createParagraphNodeWithText("Name: " + book.name);
+    const authorNode = createParagraphNodeWithText("Author: " + book.author);
+    const pageNode = createParagraphNodeWithText("Pages: " + book.numPages);
+    const readNode = createParagraphNodeWithText("Read: " + (book.read ? "True" : "False"));
+
+    newBook.appendChild(nameNode);
+    newBook.appendChild(authorNode);
+    newBook.appendChild(pageNode);
+    newBook.appendChild(readNode);
+
+    books.appendChild(newBook);
+}
+
+function createParagraphNodeWithText(text) {
+    const para = document.createElement('p');
+    const node = document.createTextNode(text);
+    para.appendChild(node);
+
+    return para;
 }
 
 function createBookFromFormData(formData) {
