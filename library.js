@@ -34,16 +34,31 @@ function addBookToLibrary(formData) {
 function addBookToDOM(book) {
     const newBook = document.createElement('div');
     newBook.classList.add("book");
+    newBook.setAttribute("data-library-index", library.length - 1);
     
     const nameNode = createParagraphNodeWithText("Name: " + book.name);
     const authorNode = createParagraphNodeWithText("Author: " + book.author);
     const pageNode = createParagraphNodeWithText("Pages: " + book.numPages);
     const readNode = createParagraphNodeWithText("Read: " + (book.read ? "True" : "False"));
+    readNode.classList.add("read-status");
+    readNode.setAttribute("data-read", book.read);
 
     newBook.appendChild(nameNode);
     newBook.appendChild(authorNode);
     newBook.appendChild(pageNode);
     newBook.appendChild(readNode);
+
+    const removeButton = document.createElement('button');
+    removeButton.appendChild(document.createTextNode("Remove"));
+    removeButton.addEventListener('click', removeBookFromDOM);
+    removeButton.classList.add("remove");
+    newBook.appendChild(removeButton);
+
+    const changeReadButton = document.createElement('button');
+    changeReadButton.appendChild(document.createTextNode("Change Read"));
+    changeReadButton.addEventListener('click', changeRead);
+    changeReadButton.classList.add("change-read");
+    newBook.appendChild(changeReadButton);
 
     books.appendChild(newBook);
 }
@@ -102,3 +117,32 @@ addButton.addEventListener('click', (e) => {
     toggleForm();
     toggleLibraryOpacity(libraryTransparentOpacity);
 });
+
+function removeBookFromDOM(e) {
+    const index = parseInt(e.target.parentElement.dataset.libraryIndex);
+
+    for (let i = index + 1; i < library.length; i++) {
+        const book = document.querySelector('[data-library-index=\"' + i +'\"]');
+        book.setAttribute("data-library-index", i - 1);
+    }
+
+    e.target.parentElement.parentElement.removeChild(e.target.parentElement);
+    library.splice(index, 1);
+}
+
+function changeRead(e) {
+    const book = e.target.parentElement;
+    const read = book.querySelector('.read-status');
+    const readStatus = read.getAttribute('data-read');
+    console.log(readStatus);
+    console.log(read);
+
+    if (readStatus === "false") {
+        read.innerText = "Read: True"
+        read.setAttribute('data-read', true);
+        return;
+    }
+
+    read.innerText = "Read: False"
+    read.setAttribute('data-read', false);
+}
